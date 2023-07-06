@@ -3,8 +3,7 @@ import os
 import re
 import csv
 
-# Prompt user for title lookup
-#book=input("What book would you like to look for? ")
+
 
 # Set path for file
 csvpath = os.path.join("Resources", "budget_data.csv")
@@ -55,8 +54,10 @@ with open(csvpath, encoding='UTF-8') as csvfile:
                         print(f'{"Greatest Increase: "}{dates[maxloc+1]}{" $"}{maxv}')
                         print(f'{"Greatest Decrease: "}{dates[minloc+1]}{" $"}{minv}')
 
-                        #create txt and write to it
-                        with open('output.txt', 'w') as f:
+                        #create txt and write to it in the Analysis folder Source: StackOverflow
+                        basepath = os.path.dirname(__file__)
+                        filepath = os.path.abspath(os.path.join(basepath, "Analysis", "Output.txt"))
+                        with open(filepath, 'w') as f:
                             ln='\n'
                             f.write(f'{"Total Months: "}{count}{ln}')
                             f.write(f'{"Total: $"} {amount}{ln}')

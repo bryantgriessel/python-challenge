@@ -56,8 +56,11 @@ with open(csvpath, encoding='UTF-8') as csvfile:
                      print(f'{"Winner: Diana DeGette"}')
                 elif winner == Raymon:
                      print(f'{"Winner: Raymon Anthony Doane"}')
-                #write to txt file
-                with open('output.txt', 'w') as f:
+                     
+                #create txt and write to it in the Analysis folder Source: StackOverflow
+                basepath = os.path.dirname(__file__)
+                filepath = os.path.abspath(os.path.join(basepath, "Analysis", "Output.txt"))
+                with open(filepath, 'w') as f:
                     f.write(f"Total Votes: {count} \n")
                     f.write(f'{"----------------------------"}\n')
                     f.write(f"Charles Casper Stockham: %{Charlesp:.3f} ({Charles}) \n")
