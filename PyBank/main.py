@@ -21,25 +21,25 @@ x=1
 with open(csvpath, encoding='UTF-8') as csvfile:
         csvreader = csv.reader(csvfile, delimiter=",")
 
-    # Loop through looking for the video
+    # Loop through not required but here in case we want to do something else with it in the future
         while found==0:
+                #skipping header row and saving into value firstrow
                 firstrow=next(csvreader)
                 print("CSV Headers are: " +str(firstrow[0])+ " | " +str(firstrow[1]))
+
                 for row in csvreader:
-                    #dates = re.split(r'-', row[0])
-                    #print(Dates)
-                    #print(row[0]+" "+ row[1])
+                    #append values array with proffit values. Do the same thing for dates 
                     values.append(int(row[1]))
                     dates.append(row[0])
                     count=count+1         
-                #if book.lower() == 'exit':
-                      #  print("exiting")
-                      #  exit()
+
                 if found ==0:
+                        #We want to skip first row since it you can't subtract anything from it hence "[1:]"
                         for i in values[1:]:
-   
+                            #get change between current and previous and stores in array. 
                             avals.append(int(values[x])-int(values[x-1]))
-                            x=x+1                
+                            x=x+1
+                                        
                         amount=sum(values)
                         avg=sum(avals)/len(avals)
                         maxv=max(avals)
@@ -47,14 +47,17 @@ with open(csvpath, encoding='UTF-8') as csvfile:
                         minv=min(avals)
                         minloc=avals.index(min(avals))
 
+                        print(f'{"----------------------------"}')
                         print(f'{"Total Months: "}{count}')
                         print(f'{"Total: $"} {amount}')
                         print(f'{"Average Change: $"}{avg:.2f}')
+                        #maxloc+1 because avals location is 1 higher since x started at 1
                         print(f'{"Greatest Increase: "}{dates[maxloc+1]}{" $"}{maxv}')
                         print(f'{"Greatest Decrease: "}{dates[minloc+1]}{" $"}{minv}')
+
+                        #create txt and write to it
                         with open('output.txt', 'w') as f:
                             ln='\n'
-                            f.write("CSV Header = " +str(firstrow[0])+ " | " +str(firstrow[1])+"\n")
                             f.write(f'{"Total Months: "}{count}{ln}')
                             f.write(f'{"Total: $"} {amount}{ln}')
                             f.write(f'{"Average Change: $"}{avg:.2f}{ln}')
@@ -62,11 +65,6 @@ with open(csvpath, encoding='UTF-8') as csvfile:
                             f.write(f'{"Greatest Decrease: "}{dates[minloc+1]}{" $"}{minv}')
                             f.close()
                         exit()
-                      # print(book)
-
-                #book=input("What book would you like to look for? ")
+ 
 
 
-            # Set variable to confirm we have found the video
-
-    # If the book is never found, alert the user
