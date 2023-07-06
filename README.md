@@ -1,6 +1,6 @@
 # python-challenge
 Contains content for our Module 3 HW Written by Bryant Griessel.
-This Containes 2 modueles for both modules:
+This Containes 2 modueles and for both modules:
 	main.py is the primary code to run.
 	Code requires accompanying CSV files that can be found in their respective resources folder.
 	Sample images can be found in the images folder for each.
