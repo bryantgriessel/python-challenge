@@ -1,0 +1,36 @@
+Dim Col
+Dim Rw
+Dim Array1(2000)
+Dim LastCol As Integer
+Dim LastRow As Integer
+
+
+
+
+Sub Crowdfunding():
+    LastRow = Cells(Rows.Count, 1).End(xlUp).Row
+    Dim Fail As String
+    Dim Succ As String
+    Dim Canc As String
+    Dim Live As String
+    Succ = "successful"
+    Fail = "failed"
+    Canc = "canceled"
+    Live = "live"
+    
+    
+    For i = 2 To LastRow
+        If Cells(i, 6).Value = Fail Then
+            Cells(i, 6).Interior.Color = vbGreen
+        ElseIf Cells(i, 6).Value = Succ Then
+            Cells(i, 6).Interior.Color = vbYellow
+        ElseIf Cells(i, 6).Value = Canc Then
+            Cells(i, 6).Interior.Color = vbRed
+        ElseIf Cells(i, 6).Value = Live Then
+            Cells(i, 6).Interior.Color = vbBlue
+        
+    
+        End If
+    Range("G1").EntireColumn.Insert
+    Next
+End Sub
